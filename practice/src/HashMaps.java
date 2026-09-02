@@ -53,6 +53,26 @@ public class HashMaps {
         return -1;
     }
 
+    static int mostFrequent(int[] arr){
+
+        HashMap<Integer, Integer> freq = new HashMap<>();
+
+        for(int num : arr){
+            freq.put(num, freq.getOrDefault(num, 0)+1);
+        }
+
+        int maxFreq = 0;
+        int answer = -1;
+
+        for(int num : arr){
+            if(freq.get(num) > maxFreq){
+                maxFreq = freq.get(num);
+                answer = num;
+            }
+        }
+        return answer;
+    }
+
 
 
     static void main(String[] args) {
@@ -60,8 +80,12 @@ public class HashMaps {
 
         //int[] arr = {2, 3, 2, 5, 3, 2, 7, 5};
         //countFrequency(arr);
-        int[] arr = {4, 5, 1, 2, 1, 4, 5, 7};
-        System.out.println(firstUnique(arr));
+
+//        int[] arr = {4, 5, 1, 2, 1, 4, 5, 7};
+//        System.out.println(firstUnique(arr));
+
+        int[] arr = {4, 7, 4, 2, 7, 9, 2, 7};
+        System.out.println(mostFrequent(arr));
     }
 
 }
