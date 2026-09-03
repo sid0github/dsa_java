@@ -1,3 +1,5 @@
+import java.sql.SQLOutput;
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class array {
@@ -206,11 +208,46 @@ public class array {
         return ans;
     }
 
+    static int[] get1sAnd0s(int[] arr){
+       int n = arr.length;
+       int i = 0;
+       int j = n-1;
+       int temp = 0;
+
+       while(i<j){
+           if(arr[i]==1 && arr[j]==0){
+               temp = arr[i];
+               arr[i] = arr[j];
+               arr[j] = temp;
+//               arr[i] = 0;
+//               arr[j] = 1;
+
+           }
+           if(arr[i] == 0){
+               i++;
+           }
+           if(arr[j] == 1){
+               j--;
+           }
+       }
+       return arr;
+    }
+
     static void main(String[] args) {
-        int[] arr = {1,2,2,2,3,3,3,4,4,4,4,4,4,5,5};
-        int[] ans = getHighLowFreqEle(arr);
-        System.out.println("highest freq :" + ans[0]);
-        System.out.println("lowest freq :" + ans[1]);
+
+        int[] nums = {1,0,1,1,0,0,1};
+        int[] ans = get1sAnd0s(nums);
+        for(int i : ans){
+            System.out.println(i);
+        }
+
+        System.out.println(Arrays.toString(get1sAnd0s(nums)));
+
+
+//        int[] arr = {1,2,2,2,3,3,3,4,4,4,4,4,4,5,5};
+//        int[] ans = getHighLowFreqEle(arr);
+//        System.out.println("highest freq :" + ans[0]);
+//        System.out.println("lowest freq :" + ans[1]);
 
 //        int[] arr = {1,2,2,2,3,3,3,4,4,4,4,4,4,5,5};
 //        int ans = getMode(arr);
@@ -264,5 +301,7 @@ public class array {
 
 //        int[] arr = {2,4,1,3};
 //        System.out.println(getAvg(arr));
+
+
     }
 }
