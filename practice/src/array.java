@@ -233,15 +233,42 @@ public class array {
        return arr;
     }
 
+    static int missingNum(int[] arr){
+        int xorSum = 0;
+        int n = arr.length;
+
+        for(int i : arr){
+            xorSum = xorSum ^ i;
+        }
+        for(int j=0; j<=n; j++){
+            xorSum = xorSum ^ j;
+        }
+        return xorSum;
+    }
+
+    static int findUniqueEle(int[] arr){
+        int xorSum = 0;
+        for(int n : arr){
+            xorSum = xorSum ^ n;
+        }
+        return xorSum;
+    }
+
     static void main(String[] args) {
 
-        int[] nums = {1,0,1,1,0,0,1};
-        int[] ans = get1sAnd0s(nums);
-        for(int i : ans){
-            System.out.println(i);
-        }
+        int[] nums = {1,1,2,3,3};
+        System.out.println(findUniqueEle(nums));
 
-        System.out.println(Arrays.toString(get1sAnd0s(nums)));
+//        int[] nums = {1,2,4,3,0};
+//        System.out.println(missingNum(nums));
+
+//        int[] nums = {1,0,1,1,0,0,1};
+//        int[] ans = get1sAnd0s(nums);
+//        for(int i : ans){
+//            System.out.println(i);
+//        }
+//
+//        System.out.println(Arrays.toString(get1sAnd0s(nums)));
 
 
 //        int[] arr = {1,2,2,2,3,3,3,4,4,4,4,4,4,5,5};
